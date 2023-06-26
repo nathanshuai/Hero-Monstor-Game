@@ -6,29 +6,13 @@ using System.Threading.Tasks;
 
 namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
 {
-    public class Monster
+    public class Monster : Character
     {
-        private string _name;
-        public string monsName { get { return _name; } }
-        private int _strength;
-        public int Strength { get { return _strength; } }
-        private int _defence;
-        public int Defence { get { return _defence; } }
-        private int _originalHealth;
-        public int OriginalHealth { get { return _originalHealth; } }
 
-
-        public int CurrentHealth;
-
-        public Monster( string monsName, int Strength, int Defence, int OriginHealth) 
+        public Monster(string name, int strength = 0, int defence = 0, int originalHealth = 0, int currentHealth = 0)
+            : base(name, strength, defence, originalHealth, currentHealth)
         {
-            _name = monsName;
-            _defence = Defence;
-            _strength = Strength;
-            _originalHealth = OriginHealth;
-            CurrentHealth = OriginHealth;
+            this.CurrentHealth = originalHealth;
         }
-
-        
     }
 }

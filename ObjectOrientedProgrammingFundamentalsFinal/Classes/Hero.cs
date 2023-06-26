@@ -8,26 +8,25 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
 {
-    public class Hero
+    public class Hero:Character
     {
-        private string _userName;
-        public string UserName { get { return _userName ;} }
-        public int BaseStrength = 5;
-        public int BaseDefence = 1;
-        public int OriginalHealth = 30;
-        
-        public int CurrentHealth;
-
         public Weapon EquippedWeapon;
         public Armour EquippedArmour;
 
         private HashSet<Weapon> _weapons = new HashSet<Weapon>();
-        private HashSet<Armour> _armours = new HashSet<Armour>(); 
+        private HashSet<Armour> _armours = new HashSet<Armour>();
         public HashSet<Weapon> GetWeapons() { return _weapons.ToHashSet(); }
         public HashSet<Armour> GetArmours() { return _armours.ToHashSet(); }
 
+        public Hero(string name, int strength = 5, int defence = 1, int originalHealth = 30, int currentHealth = 0) : base(name, strength, defence, originalHealth, currentHealth)
+        {
+            SetUserName(name);
+            CurrentHealth = originalHealth;
+            EquippedWeapon = new Weapon("Default Weapon", 1);
+            EquippedArmour = new Armour("Default Armour", 1);
 
-        
+        }
+
         public void SetUserName(string userName)
         {
             userName = userName.Trim();
@@ -47,22 +46,16 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
                 }
             }
 
-            _userName = userName;
+            string name = userName;
         }
-        public Hero(string name) 
-        {
-            SetUserName(name);
-            CurrentHealth = OriginalHealth;
-            EquippedWeapon = new Weapon("Default Weapon", 1);
-            EquippedArmour = new Armour("Default Armour", 1);
-        }
+        
 
         public void GetStats()
         {
             Console.WriteLine("Hero Stats:");
-            Console.WriteLine($"Name: {_userName}");
-            Console.WriteLine($"Base Strength: {BaseStrength}");
-            Console.WriteLine($"Base Defense: {BaseDefence}");
+            Console.WriteLine($"Name: {Name}");
+            Console.WriteLine($"Base Strength: {Strength}");
+            Console.WriteLine($"Base Defense: {Defence}");
             Console.WriteLine($"Original Health: {OriginalHealth}");
             Console.WriteLine($"Current Health: {CurrentHealth}");
         }
@@ -76,6 +69,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
 
             return inventory;
         }
+
 
         public Weapon CreateWeapon(string name, int power)
         {

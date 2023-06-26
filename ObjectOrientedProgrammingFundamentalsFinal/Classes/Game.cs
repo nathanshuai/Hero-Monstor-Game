@@ -54,12 +54,12 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
                 newHero = CreateHero(userInput);
             }
 
-            CreateMonster("Decayman^-^", 3, 1, 17);
-            CreateMonster("Sorrowbrood~~", 4, 1, 18);
-            CreateMonster("Vampface", 3, 1, 29);
-            CreateMonster("Fetidcreep", 4, 1, 14);
-            CreateMonster("The Icy Freak", 5, 1, 13);
-            CreateMonster("Dawntalon", 4, 1, 40);
+            CreateMonster("Decayman^-^", 9, 1, 17);
+            CreateMonster("Sorrowbrood~~", 7, 1, 18);
+            CreateMonster("Vampface", 7, 1, 29);
+            CreateMonster("Fetidcreep", 8, 1, 14);
+            CreateMonster("The Icy Freak", 9, 1, 13);
+            CreateMonster("Dawntalon", 7, 1, 40);
             DisplayMainMenu(newHero);
         }
 
@@ -114,7 +114,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
         }
         public void GetStats(Hero hero)
         {
-            Console.WriteLine($"Hero '{hero.UserName}' Statistics:");
+            Console.WriteLine($"Hero '{hero.Name}' Statistics:");
             Console.WriteLine($"Number of games played: {fights.Count}");
             Console.WriteLine($"Number of 'Fights' won: {FightsWon}");
             Console.WriteLine($"Number of 'Fights' lost: {FightsLost}");
@@ -126,9 +126,9 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
             
             while (!exitEquip)
             {
-                Console.WriteLine("Change Equipment Options");
-                Console.WriteLine("1. Change the Equipped Weapon");
-                Console.WriteLine("2. Change the Equipped Armour");
+                Console.WriteLine("Equipment Options:");
+                Console.WriteLine("1. Go to Equip Weapon");
+                Console.WriteLine("2. Go to Equip Armour");
                 Console.WriteLine("0. Exit to Main Menu");
                 
                 string userInput = Console.ReadLine();
@@ -263,6 +263,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
                 return null;
             }
             List<Monster> monsterList = new List<Monster>(monsters);
+            //generate random monster in a list.
             //https://learn.microsoft.com/en-us/dotnet/api/system.random.next?view=net-7.0
             Random random = new Random();
             int index = random.Next(0, monsterList.Count);
@@ -296,9 +297,9 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
                         {
                             if(coins <= Coins)
                             {
-                                hero.BaseStrength = coins + hero.BaseStrength;
+                                hero.Strength = coins + hero.Strength;
                                 Coins = Coins - coins;
-                                Console.WriteLine($"You have increase your BaseStrength to '{hero.BaseStrength}';");
+                                Console.WriteLine($"You have increase your BaseStrength to '{hero.Strength}';");
                             }else
                             {
                                 Console.WriteLine("Please enter the amount which is smaller or qual to wallet's coins amount ");
@@ -320,9 +321,9 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
                         {
                             if (coins2 <= Coins)
                             {
-                                hero.BaseDefence = coins2 + hero.BaseDefence;
+                                hero.Defence = coins2 + hero.Defence;
                                 Coins = Coins - coins2;
-                                Console.WriteLine($"You have increase your BaseStrength to '{hero.BaseDefence}';");
+                                Console.WriteLine($"You have increase your BaseStrength to '{hero.Defence}';");
                             }
                             else
                             {

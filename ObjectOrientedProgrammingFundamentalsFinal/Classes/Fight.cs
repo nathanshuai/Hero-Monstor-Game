@@ -24,21 +24,27 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
 
         public void HeroTurn()
         {
-            int heroDamage = hero.BaseStrength + hero.EquippedWeapon.Power - monster.Defence;
+
+            
+            int heroDamage = hero.Strength + hero.EquippedWeapon.Power - monster.Defence;
             monster.CurrentHealth -= heroDamage;
 
-            Console.WriteLine($"Hero attacked Monster '{monster.monsName}' for '{heroDamage}' damage.");
+            Console.WriteLine($"Hero attacked Monster '{monster.Name}' for '{heroDamage}' damage.");
+            //use Math.Max() to change the health format not be negative.
             //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
             Console.WriteLine($"Monster's current health: {Math.Max(0, monster.CurrentHealth)}");
+           
         }
 
         public void MonsterTurn()
         {
-            int monsterDamage = monster.Strength - (hero.BaseDefence + hero.EquippedArmour.Power);
+            
+            int monsterDamage = monster.Strength - (hero.Defence + hero.EquippedArmour.Power);
             hero.CurrentHealth -= monsterDamage;
 
-            Console.WriteLine($"Monster attacked Hero '{hero.UserName}' for '{monsterDamage}' damage.");
+            Console.WriteLine($"Monster attacked Hero '{hero.Name}' for '{monsterDamage}' damage.");
             Console.WriteLine($"Hero's current health: {Math.Max(0, hero.CurrentHealth)}");
+            
         }
 
         public bool Win()
