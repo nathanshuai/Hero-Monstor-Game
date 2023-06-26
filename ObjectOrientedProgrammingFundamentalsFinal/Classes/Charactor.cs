@@ -9,7 +9,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
     public abstract class Character
     {
         private string _name;
-        public string Name { get { return _name; } }
+        public string Name { get { return _name; }  set { } }
 
         private int _strength;
         public int Strength { get { return _strength; } set { _strength = value; } }

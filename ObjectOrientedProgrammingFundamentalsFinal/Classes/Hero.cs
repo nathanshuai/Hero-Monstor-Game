@@ -20,33 +20,11 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
 
         public Hero(string name, int strength = 5, int defence = 1, int originalHealth = 30, int currentHealth = 0) : base(name, strength, defence, originalHealth, currentHealth)
         {
-            SetUserName(name);
+            Name = name;
             CurrentHealth = originalHealth;
             EquippedWeapon = new Weapon("Default Weapon", 1);
             EquippedArmour = new Armour("Default Armour", 1);
 
-        }
-
-        public void SetUserName(string userName)
-        {
-            userName = userName.Trim();
-
-            if (userName.Length <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(userName), "UserName must be 1 character in length");
-                
-            } 
-            else
-            {
-                // stack overflow suggestion for validating alphanumeric input
-                // https://stackoverflow.com/a/26576066
-                if (userName.Any(ch => !char.IsLetterOrDigit(ch)))
-                {
-                    throw new ArgumentOutOfRangeException(nameof(userName), "UserName may only contain letters and numbers");
-                }
-            }
-
-            string name = userName;
         }
         
 
