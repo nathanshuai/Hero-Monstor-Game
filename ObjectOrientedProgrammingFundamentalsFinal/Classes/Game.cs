@@ -263,7 +263,8 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
                 return null;
             }
             List<Monster> monsterList = new List<Monster>(monsters);
-
+            //generate random monster in a list.
+            //https://learn.microsoft.com/en-us/dotnet/api/system.random.next?view=net-7.0
             Random random = new Random();
             int index = random.Next(0, monsterList.Count);
             Monster randomMonster = monsterList[index];
