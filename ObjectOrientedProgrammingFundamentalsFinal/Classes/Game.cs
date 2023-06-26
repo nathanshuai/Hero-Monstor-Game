@@ -45,15 +45,28 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
         public void Start()
         {
             
-            Console.WriteLine("Welcome to the Game!");
+            Console.WriteLine("Welcome to the Role-Playing Game!");
             Hero newHero = null;
-            while (newHero == null)
+            bool userInput = false;
+
+            while (!userInput)
             {
                 Console.Write("Enter your name: ");
-                string userInput = Console.ReadLine();
-                newHero = CreateHero(userInput);
-            }
+                string Input = Console.ReadLine();
 
+                if (string.IsNullOrEmpty(Input) || string.IsNullOrWhiteSpace(Input))
+                {
+                    Console.WriteLine("UserName cannot be null or empty, or contain only whitespace");
+                }
+                else
+                {
+                    newHero = CreateHero(Input);
+                    Console.WriteLine($"New Hero '{newHero.Name}'has been created! ");
+                    userInput = true;
+                }
+                Console.WriteLine();  
+            }
+            
             CreateMonster("Decayman^-^", 9, 1, 17);
             CreateMonster("Sorrowbrood~~", 7, 1, 18);
             CreateMonster("Vampface", 7, 1, 29);
@@ -218,15 +231,13 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
             }
         }
 
-        
-
         public void StartFight(Hero hero)
         {
             Console.WriteLine("Fight started!");
             Monster monster = GetRandomMonster();
             Fight fight = new Fight(hero, monster);
-            
-            while (monster != null && monster.CurrentHealth > 0 && hero.CurrentHealth > 0  )
+
+            while (monster != null && monster.CurrentHealth > 0 && hero.CurrentHealth > 0)
             {
                 fight.HeroTurn();
 
@@ -271,6 +282,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
 
             return randomMonster;
         }
+
 
         public void SpendCoins(Hero hero) 
         {
