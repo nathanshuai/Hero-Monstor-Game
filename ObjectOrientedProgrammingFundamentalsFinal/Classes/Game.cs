@@ -16,6 +16,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
         public HashSet<Armour> armours = new HashSet<Armour>();
         public HashSet<Hero> heroes = new HashSet<Hero>();
         public HashSet<Monster> monsters = new HashSet<Monster>();
+        public HashSet<Monster> defeatedMonsters = new HashSet<Monster>();
         public HashSet<Fight> fights = new HashSet<Fight>();
         public int FightsWon = 0;
         public int FightsLost = 0;
@@ -69,10 +70,10 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
             
             CreateMonster("Decayman^-^", 9, 1, 17);
             CreateMonster("Sorrowbrood~~", 7, 1, 18);
-            CreateMonster("Vampface", 7, 1, 29);
+            CreateMonster("Vampface", 7, 1, 19);
             CreateMonster("Fetidcreep", 8, 1, 14);
             CreateMonster("The Icy Freak", 9, 1, 13);
-            CreateMonster("Dawntalon", 7, 1, 40);
+            CreateMonster("Dawntalon", 7, 1, 15);
             DisplayMainMenu(newHero);
         }
 
@@ -243,10 +244,12 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
 
                 if (fight.Win())
                 {
-                    Console.WriteLine("You defeated the monster!");
+                    Console.WriteLine($"You defeated the monster! ");
                     FightsWon++;
                     Coins++;
+                    monster.CurrentHealth = monster.OriginalHealth;
                     monsters.Remove(monster);
+                    defeatedMonsters.Add(monster);
                     fights.Add(fight);
                     break;
                 }
@@ -259,6 +262,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
                     FightsLost++;
                     fights.Add(fight);
                     hero.CurrentHealth = hero.OriginalHealth;
+                    monsters.UnionWith(defeatedMonsters);
                     break;
                 }
 
@@ -335,7 +339,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
                             {
                                 hero.Defence = coins2 + hero.Defence;
                                 Coins = Coins - coins2;
-                                Console.WriteLine($"You have increase your BaseStrength to '{hero.Defence}';");
+                                Console.WriteLine($"You have increase your Basedefence to '{hero.Defence}';");
                             }
                             else
                             {
@@ -360,7 +364,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
                             {
                                 hero.CurrentHealth = coins3 + hero.CurrentHealth;
                                 Coins = Coins - coins3;
-                                Console.WriteLine($"You have increase your BaseStrength to '{hero.CurrentHealth}';");
+                                Console.WriteLine($"You have increase your CurrentHealth to '{hero.CurrentHealth}';");
                             }
                             else
                             {
