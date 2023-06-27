@@ -238,7 +238,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
             Monster monster = GetRandomMonster();
             Fight fight = new Fight(hero, monster);
 
-            while (monster != null && monster.CurrentHealth > 0 && hero.CurrentHealth > 0)
+            while (monster != null )
             {
                 fight.HeroTurn();
 
