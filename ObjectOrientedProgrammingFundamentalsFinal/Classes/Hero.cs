@@ -18,7 +18,7 @@ namespace ObjectOrientedProgrammingFundamentalsFinal.Classes
         public HashSet<Weapon> GetWeapons() { return _weapons.ToHashSet(); }
         public HashSet<Armour> GetArmours() { return _armours.ToHashSet(); }
 
-        public Hero(string name, int strength = 5, int defence = 1, int originalHealth = 30, int currentHealth = 0) : base(name, strength, defence, originalHealth, currentHealth)
+        public Hero(string name, int strength = 5, int defence = 1, int originalHealth = 40, int currentHealth = 0) : base(name, strength, defence, originalHealth, currentHealth)
         {
             Name = name;
             CurrentHealth = originalHealth;
