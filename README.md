@@ -1,4 +1,4 @@
-### Hero-Monstor
+### Hero-Monster Game
 
 ##For this project, we will be creating a “Role-Playing Game” as a console application. 
 In this application, the console will prompt the user to take different actions and then display information based on the outcome.
